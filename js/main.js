@@ -1,7 +1,9 @@
 const header = document.getElementById("topbar");
 const blackBackground = document.getElementById("menuDiv");
 var woodenHorse = new Audio("audio/audio.mp3");
-var menu = document.getElementById("menuDiv").getElementsByClassName("menuButton");
+var menuButtons = document.getElementById("menuDiv").getElementsByClassName("menuButton");
+var allMenuButtons = document.getElementsByClassName("menuButton");
+
 
 const restDiv = document.getElementById("rest2");
 document.title = "Website";
@@ -16,9 +18,8 @@ var timeout = 10;
 
 
 
-setInnerText();
 renderMouseCursor();
-registerListeners();
+setInnerText();
 
 
 
@@ -51,54 +52,37 @@ function rainBowBackground() {
 
   function setInnerText() {
 
-  for(var i = 0; i < menu.length; i++) {
-    const menuButtom = menu.item(i);
-    const extendableMenu = document.getElementById("bar" + i);
-    extendableMenu.hidden = true;
-    for(var i2 = 0; i2 < extendableMenu.getElementsByClassName("menuButton"); i2++) {
-
-
-    }
-    switch(i) {
-      case 0: menuButtom.innerHTML = "Informationen"; break;
-      case 1: menuButtom.innerHTML = "DevLog";break;
-      case 2: menuButtom.innerHTML = "Fun Features";break;
-      case 3: menuButtom.innerHTML = "Memes";break;
+  for(var i = 0; i < menuButtons.length; i++) {
+    const menuButtom = menuButtons.item(i);
+    menuButtom.style.left = (100 / menuButtons.length) * i + "%";
+    menuButtom.style.width = (100/ menuButtons.length) + "%";
+    const extendableMenuByID = document.getElementById("bar" + i);
+    extendableMenuByID.hidden = false;
+    extendableMenuByID.style.width = (100/ menuButtons.length) + "%";
+    extendableMenuByID.style.left = (100 / menuButtons.length) * i + "%";
+    extendableMenuByID.style.top = menuButtom.getBoundingClientRect().bottom + "px";
+    for(var i2 = 0; i2 < extendableMenuByID.getElementsByClassName("menuButton").length; i2++) {
+      const extendableMenuButton = document.getElementById((i) + "menu" + i2);
+      extendableMenuByID.style.height =
+        (50 * (extendableMenuByID.getElementsByClassName("menuButton").length + 1)) + "px";
+      extendableMenuButton.style.top = menuButtom.getBoundingClientRect().bottom + 100 + "px";
+      extendableMenuButton.style.height = "50px";
+      extendableMenuButton.style.width = "90%";
+      extendableMenuButton.style.borderRadius = "10px";
     }
   }
 }
 
 
   function renderMouseCursor() {
-    for (var i = 0; i < menu.length; i++) {
-      const menu = document.getElementById(0 + "menu" + i);
+    for (var i = 0; i < allMenuButtons.length; i++) {
+      const menu = allMenuButtons.item(i);
       menu.onmouseover = function () {
         menu.style.cursor = "pointer";
       }
     }
   }
 
-  function registerListeners() {
-  for(var i = 0; i < document.getElementsByClassName("menuButton").length; i++) {
-    const menuButtom = document.getElementsByClassName("menuButton").item(i);
-    menuButtom.addEventListener("mouseenter", function (event) {
-      switch(menuButtom.id.charAt(5)) {
-        case '0': document.getElementById("bar0").hidden = false;
-        case '1': document.getElementById("bar1").hidden = false;
-        case '2': document.getElementById("bar2").hidden = false;
-        case '3': document.getElementById("bar3").hidden = false;
-      }
-    }, true);
-    menuButtom.addEventListener("mouseleave", function (event) {
-      switch(menuButtom.id.charAt(5)) {
-        case '0': document.getElementById("bar0").hidden = true;
-        case '1': document.getElementById("bar1").hidden = true;
-        case '2': document.getElementById("bar2").hidden = true;
-        case '3': document.getElementById("bar3").hidden = true;
-      }
-    },  true);
-    }
-  }
 
   function findBar(x) {
   return document.getElementById("bar" + x.toString());

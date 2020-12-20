@@ -57,26 +57,6 @@ p{
   font-size:35px;
 }
 
-.menuButton{
-  border-style: solid;
-  border-color: black;
-  display: table-cell;
-  text-align: center;
-  color:rgb(150, 150, 150);
-  background-color: rgba(15, 15, 15,0.8);
-  border-radius: 15px;
-  top:25%;
-  width:25%;
-}
-
-.menuInformation{
-  height: 20px;
-  background-color: rgba(15, 15, 15,0.8);
-  padding: 10px;
-  justify-content: left;
-  border-radius:15px;
-  margin: 5px 2px;
-}
 
 .rest{
   width: 100%;
@@ -86,12 +66,15 @@ p{
 }
 
 .bar{
+  position:absolute;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  flex-wrap: wrap;
   height: 100px;
-  background-color: rgba(15, 15, 15,0.8);
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  margin-right: 5px;
-  margin-left: 5px;
+  background-color: rgba(0, 0, 0,0.8);
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
 }
 
 #menuDiv{
@@ -111,8 +94,17 @@ p{
   background-image: url("../img/wallpaper.png");
   background-position: 0px -330px;
   background-size: 100% 300%;
-  border-bottom: 5px solid black;
 }
+
+.menuButton{
+  display: table-cell;
+  text-align: center;
+  color:rgb(150, 150, 150);
+  background-color: rgba(15, 15, 15,0.8);
+  top:25%;
+  margin-top: 5px;
+}
+
 
 
 .menuButton:hover {
