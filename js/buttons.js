@@ -6,12 +6,10 @@ registerClickListener()
  */
 function registerClickListener() {
   for(var i = 0; i < getEveryMainMenuButton().length; i++) {
-    console.log(i);
     for(var j = 0; j < getMenuAmountInsideBar(i); j++) {
       const menuButton = getMenuButton(i,j)
       menuButton.addEventListener("click", function (event) {
         var innerText = menuButton.innerText;
-        console.log(innerText);
         loadContent(innerText.toUpperCase());
 
       },false);
